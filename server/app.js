@@ -15,11 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //for deployment to AWS
 
-app.use(express.static(__dirname + "/../client/build"));
+// app.use(express.static(__dirname + "/../client/build"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
+// });
 
 //have app listen on port 8080
 const port = process.env.PORT || 8080;
