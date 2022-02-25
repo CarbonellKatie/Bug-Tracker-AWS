@@ -1,0 +1,60 @@
+#cover {
+  background: #222 url("../../images/room.jpg") center center no-repeat !important;
+  background-size: cover !important;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.login-component {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol" !important;
+}
+
+#cover-caption {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+form:before {
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(105, 86, 86, 0.746);
+  z-index: -1;
+  border-radius: 10px;
+}
+
+#submit-btn {
+  background-color: aliceblue;
+  color: black;
+  border: 2px solid rgb(71, 50, 50);
+}
+#submit-btn:hover {
+  cursor: pointer;
+  background-color: rgba(238, 235, 232, 0.945);
+  color: black;
+}
+#submit-btn:click {
+  background-color: rgb(238, 235, 232, 0.945);
+  color: black;
+}
+
+#error-username,
+#error-password {
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}

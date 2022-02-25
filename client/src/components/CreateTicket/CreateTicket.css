@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+textarea,
+select {
+  background-color: rgb(231, 223, 223);
+  resize: vertical;
+  padding: 10px;
+}
+
+#EditTable {
+  min-width: 90% !important;
+  max-width: 90% !important;
+}
+
+/* input {
+  background-color: rgb(231, 223, 223);
+  padding: 10px;
+  text-align: center;
+} */
+
+table {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  border-collapse: collapse;
+  border: 2px solid rgb(48, 46, 46);
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 60% !important;
+  max-width: 80% !important;
+  margin-top: 2rem;
+}
+
+#h1class {
+  text-align: center;
+  color: #a89e9e;
+  margin-top: 20px;
+  background-color: rgba(245, 245, 245, 0.452);
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.table,
+td {
+  vertical-align: middle !important;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(207, 193, 193);
+}
+
+.thead-dark th {
+  font-size: 1.2rem;
+  background-color: rgb(146, 104, 104) !important;
+  color: white !important;
+}
+th,
+td {
+  padding: 10px;
+  /* text-align: center !important; */
+  /* vertical-align: top !important; */
+  border: 2px solid rgb(54, 54, 54);
+}
+
+#status-select {
+  text-align: center;
+  vertical-align: middle;
+}
+#create-ticket,
+#submit {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  background-color: rgb(236, 233, 233);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  width: 30rem;
+}
+
+#addMessage {
+  text-align: center;
+  color: rgb(97, 93, 93);
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  /* display: block; */
+  line-height: 1em; /* a */
+  max-height: 4em; /* a x number of line to show (ex : 2 line)  */
+}
+
+.create-ticket {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  background-color: rgb(228, 220, 215) !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.header {
+  min-height: 30vh;
+  background-image: linear-gradient(
+      to left bottom,
+      rgba(225, 226, 228, 0.219),
+      rgba(236, 235, 235, 0.63)
+    ),
+    url("../../images/backgroundbrown.png");
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.back-box {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
+
+#back {
+  font-size: 1rem;
+  color: rgb(235, 227, 227);
+  padding: 10px;
+  border: 3px solid rgb(211, 205, 205);
+  border-radius: 4px !important;
+  background-color: rgba(255, 255, 255, 0.26);
+  cursor: pointer;
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+}
+
+.heading-primary {
+  color: rgb(231, 227, 227);
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 30px;
+  line-height: 3rem;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 5px;
+  z-index: 1001;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 7.4px;
+  z-index: 1002;
+}
