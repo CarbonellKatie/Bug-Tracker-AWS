@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const loginRoutes = require("./api/routes/login");
 const adminRoutes = require("./api/routes/admin");
@@ -11,6 +12,10 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json()); //allows us to send data in json format
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//for deployment to AWS EC2 instance
+app.use(express.static(path.join(__dirname, “client/build”)))
+
 
 //have app listen on port 8080
 const port = process.env.PORT || 8080;

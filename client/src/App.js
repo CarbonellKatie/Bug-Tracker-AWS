@@ -195,6 +195,7 @@ function App() {
             teamName={"none"}
           />
         )}
+        {/* if team inventory page is selected, show only tickets with corresponding team id */}
         {state.showTeamInventory && (
           <Inventory
             userId={state.userId}

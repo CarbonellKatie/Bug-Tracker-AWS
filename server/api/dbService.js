@@ -3,11 +3,19 @@
 const mysql = require("mysql");
 let instance = null;
 
+//local database
+// const pool = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "ticket_system",
+// });
+
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "ticket_system",
+  host: "bug-tracker-db.c5oyivbqljdl.us-east-1.rds.amazonaws.com",
+  user: "admin",
+  password: "devonh12#",
+  database: "bug_tracker",
 });
 
 class DbService {

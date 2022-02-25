@@ -69,6 +69,8 @@ const Inventory = ({
           </tr>
         </thead>
         {/* map through tickets array and create a ticket component for every ticket object */}
+        {/* pass Ticket component the ticket information (in the form of a ticket object) and a 
+        function to toggle the visibility of the edit ticket page */}
         <tbody id="table-body">
           {tickets?.map((ticket, index) => (
             <Ticket
