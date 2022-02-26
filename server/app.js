@@ -5,6 +5,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 
+const morgan = require("morgan");
+
 const loginRoutes = require("./api/routes/login");
 const adminRoutes = require("./api/routes/admin");
 const inventoryRoutes = require("./api/routes/inventory");
@@ -35,40 +37,40 @@ app.use("/login", loginRoutes);
 //dont need results from query, just making a post request, only need to check if there is an error
 //store data to be inserted in request body
 //FOR FUTURE USE, GETTING MOVED...
-app.post("/addUser", (req, res) => {
-  const data = {
-    id: "default", //id is auto-incremented
-    username: req.body.username,
-    password: req.body.password,
-    permissions: req.body.permissions,
-  };
-  const query = "INSERT INTO users VALUES (?, ?, ?, ?)";
-  pool.query(query, Object.values(data), (error) => {
-    //if unsuccessful, respond with a json object with error code
-    if (error) {
-      res.json({ status: "failure", reason: error.code });
-    } else {
-      //if successful in adding, respond with the user info that we added to the database
-      res.json({ status: "success", data: data });
-    }
-  });
-});
+// app.post("/addUser", (req, res) => {
+//   const data = {
+//     id: "default", //id is auto-incremented
+//     username: req.body.username,
+//     password: req.body.password,
+//     permissions: req.body.permissions,
+//   };
+//   const query = "INSERT INTO users VALUES (?, ?, ?, ?)";
+//   pool.query(query, Object.values(data), (error) => {
+//     //if unsuccessful, respond with a json object with error code
+//     if (error) {
+//       res.json({ status: "failure", reason: error.code });
+//     } else {
+//       //if successful in adding, respond with the user info that we added to the database
+//       res.json({ status: "success", data: data });
+//     }
+//   });
+// });
 
 //update permissions for an existing user
 //FOR FUTURE USE... GETTING MOVED
-app.put("/:id", (req, res) => {
-  const id = req.params.id;
-  const newPermissions = req.body.permissions;
-  const query = "UPDATE users SET permissions=? WHERE id=?";
+// app.put("/:id", (req, res) => {
+//   const id = req.params.id;
+//   const newPermissions = req.body.permissions;
+//   const query = "UPDATE users SET permissions=? WHERE id=?";
 
-  pool.query(query, [newPermissions, id], (error) => {
-    if (error) {
-      res.json({ status: "failure", reason: error.code });
-    } else {
-      res.json({ status: "success", id: id, permissions: newPermissions });
-    }
-  });
-});
+//   pool.query(query, [newPermissions, id], (error) => {
+//     if (error) {
+//       res.json({ status: "failure", reason: error.code });
+//     } else {
+//       res.json({ status: "success", id: id, permissions: newPermissions });
+//     }
+//   });
+// });
 
 //  -----------------LOGIN SYSTEM ---------------
 
