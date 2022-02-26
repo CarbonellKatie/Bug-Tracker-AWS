@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -14,7 +15,6 @@ app.use(express.json()); //allows us to send data in json format
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //for deployment to AWS
-
 // app.use(express.static(__dirname + "/../client/build"));
 
 // app.get("*", (req, res) => {
@@ -34,6 +34,7 @@ app.use("/login", loginRoutes);
 //post request to add new admin login credentials
 //dont need results from query, just making a post request, only need to check if there is an error
 //store data to be inserted in request body
+//FOR FUTURE USE, GETTING MOVED...
 app.post("/addUser", (req, res) => {
   const data = {
     id: "default", //id is auto-incremented
@@ -53,20 +54,8 @@ app.post("/addUser", (req, res) => {
   });
 });
 
-//remove a user from the database
-app.delete("/", (req, res) => {
-  const id = req.body.id;
-  const query = "DELETE FROM users WHERE id=?";
-  pool.query(query, id, (error) => {
-    if (error) {
-      res.json({ status: "failure", reason: error.code });
-    } else {
-      res.json({ status: "success", id: id });
-    }
-  });
-});
-
 //update permissions for an existing user
+//FOR FUTURE USE... GETTING MOVED
 app.put("/:id", (req, res) => {
   const id = req.params.id;
   const newPermissions = req.body.permissions;

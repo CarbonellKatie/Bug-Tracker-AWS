@@ -1,5 +1,5 @@
 //send all queries to here, this class will respond with promises which will resolve, returning the requested data
-
+require("dotenv").config();
 const mysql = require("mysql");
 let instance = null;
 
@@ -12,10 +12,10 @@ let instance = null;
 // });
 
 const pool = mysql.createPool({
-  host: "bug-tracker-db.c5oyivbqljdl.us-east-1.rds.amazonaws.com",
-  user: "admin",
-  password: "devonh12#",
-  database: "bug_tracker",
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
 class DbService {
