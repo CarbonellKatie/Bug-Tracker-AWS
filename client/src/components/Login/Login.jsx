@@ -34,7 +34,7 @@ const Login = ({ loginSuccess }) => {
     e.preventDefault();
 
     //VALIDATE INPUT and update app state with user id
-    fetch("http://localhost:8080/login/getUser", {
+    fetch("/login/getUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -46,15 +46,12 @@ function App() {
   //fetch all tickets associalted with the current userId stored in the state via http request
   const fetchTicketsIndividual = async () => {
     console.log(state.userId);
-    const res = await fetch(
-      `http://localhost:8080/inventory/getAll/${state.userId}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    const res = await fetch(`/inventory/getAll/${state.userId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     const data = res.json();
     return data;
   };
@@ -62,15 +59,12 @@ function App() {
   //fetch all tickets associated with the given teamid via http request
   const fetchTicketsTeam = async () => {
     console.log(state.teamSelected);
-    const res = await fetch(
-      `http://localhost:8080/inventory/teams/tickets/${state.teamSelected}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    const res = await fetch(`/inventory/teams/tickets/${state.teamSelected}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     const data = res.json();
     return data;
   };
