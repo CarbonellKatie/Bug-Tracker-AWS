@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./login.css";
+import backgroundImg from "../../images/loginbackground.jpg";
 // import API from "../../apis/API";
 
 const Login = ({ loginSuccess }) => {
@@ -60,23 +61,25 @@ const Login = ({ loginSuccess }) => {
   };
 
   return (
-    <div id="cover" className="min-vh-100">
-      <div id="cover-caption">
+    <div>
+      <section id="main" className="Form my-4 mx-5">
         <div className="container">
-          <div className="row text-white">
-            <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-              <h1 className="display-4 py-2 text-truncate">Login</h1>
-              <div className="px-2">
-                <form
-                  action=""
-                  className="justify-content-center"
-                  onSubmit={onSubmit}
-                >
-                  <div className="form-group">
+          <div className="row no-gutters">
+            <div className="col-lg-5">
+              <img id="loginImg" src={backgroundImg} />
+            </div>
+            <div className="col-lg-7 px-5 pt-7">
+              <h1 className="font-weight-bold py-3 mt-5">
+                Bug Tracking System
+              </h1>
+              <h4>Sign in to Your Account</h4>
+              <form action="" onSubmit={onSubmit}>
+                <div className="form-row">
+                  <div className="col-lg-12">
                     <input
                       type="text"
                       id="username-input"
-                      className="form-control"
+                      className="form-control my-3 p-4"
                       placeholder="Enter Username"
                       onChange={(e) =>
                         setLoginData({
@@ -86,30 +89,36 @@ const Login = ({ loginSuccess }) => {
                       }
                     />
                   </div>
-                  <div className="form-group">
+                </div>
+
+                <div className="form-row">
+                  <div className="col-lg-12">
                     <input
                       type="text"
                       id="password-input"
-                      className="form-control"
+                      className="form-control my-3 p-4"
                       placeholder="Enter Password"
                       onChange={(e) =>
                         setLoginData({ ...loginData, password: e.target.value })
                       }
                     />
                   </div>
-                  <p id="error-username">{loginData.error}</p>
-                  {/* <p id="error-password"></p> */}
-
-                  <button type="submit" id="submit-btn" className="btn-lg">
+                </div>
+                <div className="form-row">
+                  <button type="submit" className="btn1 mt-3 mb-5">
                     Login
                   </button>
-                  {/* <LoginBtn /> */}
-                </form>
-              </div>
+                </div>
+                <p className="mb-5">
+                  {" "}
+                  <a href="#">Register</a>
+                </p>
+                <p id="error-username">{loginData.error}</p>
+              </form>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
