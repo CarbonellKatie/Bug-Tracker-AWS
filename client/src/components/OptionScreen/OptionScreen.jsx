@@ -6,9 +6,8 @@ import "./OptionScreen.css";
 const OptionScreen = ({
   username,
   userId,
-  showInventoryPage,
+  showIndividualPage,
   showLoginPage,
-  setTeamSelected,
   showTeamInventoryPage,
 }) => {
   const [state, setState] = useState({
@@ -49,7 +48,7 @@ const OptionScreen = ({
       },
     };
     const results = await fetch(
-      `http://localhost:8080/inventory/teams/${userId}`,
+      `http://localhost:3001/inventory/teams/${userId}`,
       params
     );
     const teams = await results.json();
@@ -99,11 +98,12 @@ const OptionScreen = ({
         <div className="container">
           <div className="buttons-class">
             {/* view individual ticket button, take user to individual tickets page and show tickets
-            that are associated with their userID in the database */}
+            that are associated with their userID in the database. Calling the showIndividualPage fuction will
+            set the value of teamSelected to 0 in app.js state and show all tickets associated with this user's userId */}
             <button
               id="individual"
               className="option-button"
-              onClick={showInventoryPage}
+              onClick={showIndividualPage}
             >
               View Personal Tickets
             </button>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./EditTicket.css";
 
-const EditTicket = ({ ticket, showInventoryPage }) => {
+const EditTicket = ({ ticket, showInventoryPage, teamSelected }) => {
   //   useEffect(() => {});
 
   const [ticketInfo, setTicketInfo] = useState({
@@ -43,7 +43,7 @@ const EditTicket = ({ ticket, showInventoryPage }) => {
       }),
     };
     //make PUT request to backend to update the ticket with this ticketid using information from state
-    const res = await fetch("/inventory", params);
+    const res = await fetch("http://localhost:3001/inventory", params);
     const response = await res.json();
     if (response.success == true) {
       setMessage("Ticket successfully updated.");
@@ -63,7 +63,7 @@ const EditTicket = ({ ticket, showInventoryPage }) => {
       }),
     };
 
-    const res = await fetch("/inventory", params);
+    const res = await fetch("http://localhost:3001/inventory", params);
     const response = await res.json();
     if (response.success == true) {
       setMessage("Ticket successfully deleted.");

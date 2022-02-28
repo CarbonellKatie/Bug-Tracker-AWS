@@ -58,7 +58,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
 
     //make http request and await response, then evaluate response success and display
     //message to indicate success or failure of ticket add
-    const res = await fetch("/inventory", requestOptions);
+    const res = await fetch("http://localhost:3001/inventory", requestOptions);
     const response = await res.json();
     if (response.success == true) {
       addSuccess();

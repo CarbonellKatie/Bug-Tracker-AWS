@@ -3,21 +3,21 @@ require("dotenv").config();
 const mysql = require("mysql");
 let instance = null;
 
-//local database
-// const pool = mysql.createPool({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "ticket_system",
-// });
-
+//hide later in .env file
 const pool = mysql.createPool({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  port: process.env.PORT,
+  host: "bug-tracker-db.c5oyivbqljdl.us-east-1.rds.amazonaws.com",
+  user: "admin",
+  password: "devonh12#",
+  database: "bug_tracker",
 });
+
+// const pool = mysql.createPool({
+//   host: process.env.HOST,
+//   user: process.env.USER,
+//   password: process.env.PASSWORD,
+//   database: process.env.DATABASE,
+//   port: process.env.DB_PORT,
+// });
 
 class DbService {
   //singleton class
@@ -157,7 +157,7 @@ class DbService {
   //get all tickets associated with the teamId given
   async getTeamTickets(teamId) {
     const tickets = await new Promise((resolve, reject) => {
-      const query = "SELECT * FROM TICKETS WHERE team_id = ?";
+      const query = "SELECT * FROM tickets WHERE team_id = ?";
       pool.query(query, [teamId], (err, results) => {
         if (err) {
           reject(new Error(err.message));

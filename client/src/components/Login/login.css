@@ -1,5 +1,6 @@
 #cover {
-  background: #222 url("../../images/room.jpg") center center no-repeat !important;
+  background: #222 url("../../images/ticketbackground.jpg") center center
+    no-repeat !important;
   background-size: cover !important;
   height: 100vh;
   text-align: center;

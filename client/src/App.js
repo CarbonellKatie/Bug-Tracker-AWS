@@ -46,12 +46,15 @@ function App() {
   //fetch all tickets associalted with the current userId stored in the state via http request
   const fetchTicketsIndividual = async () => {
     console.log(state.userId);
-    const res = await fetch(`/inventory/getAll/${state.userId}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const res = await fetch(
+      `http://localhost:3001/inventory/getAll/${state.userId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
     const data = res.json();
     return data;
   };
@@ -59,12 +62,15 @@ function App() {
   //fetch all tickets associated with the given teamid via http request
   const fetchTicketsTeam = async () => {
     console.log(state.teamSelected);
-    const res = await fetch(`/inventory/teams/tickets/${state.teamSelected}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const res = await fetch(
+      `http://localhost:3001/inventory/teams/tickets/${state.teamSelected}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
     const data = res.json();
     return data;
   };
@@ -83,8 +89,30 @@ function App() {
     setState(obj);
   };
 
-  //change visibility of inventory component in App.js state
+  //show the user's individual ticket inventory page if there is no team selected,
+  //and show the selected team page if there is a team selected
   const showInventoryPage = () => {
+    if (state.teamSelected == 0) {
+      showIndiviualPage(); //if no team is selected, that means the user wants to view individual tickets
+    } else if (state.teamSelected != 0) {
+      const obj = {
+        ...state,
+        showLogin: false,
+        showInventory: false,
+        showEditTicket: false,
+        showCreateTicket: false,
+        showOptionScreen: false,
+        showTeamInventory: true,
+      };
+      setState(obj);
+    }
+  };
+
+  // called when "view personal tickets" button is pressed on options screen,
+  // used to reset teamSelected to 0 and set visibility of individual inventory to true.
+  // teamSelected must be set to 0 so that when we are navigating between create ticket and return to
+  // inventory, our app knows which inventory page to return to (teamSelected = 0 means return to personal inventory)
+  const showIndividualPage = () => {
     const obj = {
       ...state,
       showLogin: false,
@@ -93,6 +121,7 @@ function App() {
       showCreateTicket: false,
       showOptionScreen: false,
       showTeamInventory: false,
+      teamSelected: 0, //reset team to 0 if we select the personal inventory page
     };
     setState(obj);
   };
@@ -171,7 +200,7 @@ function App() {
           <OptionScreen
             username={state.username}
             userId={state.userId}
-            showInventoryPage={showInventoryPage}
+            showIndividualPage={showIndividualPage}
             showLoginPage={showLoginPage}
             setTeamSelected={setTeamSelected}
             showTeamInventoryPage={showTeamInventoryPage}

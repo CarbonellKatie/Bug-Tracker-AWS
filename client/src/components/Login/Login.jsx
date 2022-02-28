@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./login.css";
+// import API from "../../apis/API";
 
 const Login = ({ loginSuccess }) => {
   //states updated as soon as text is changed in input fields
@@ -33,8 +34,8 @@ const Login = ({ loginSuccess }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    //VALIDATE INPUT and update app state with user id
-    fetch("/login/getUser", {
+    // VALIDATE INPUT and update app state with user id
+    fetch("http://localhost:3001/login/getUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
