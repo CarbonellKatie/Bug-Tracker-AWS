@@ -23,6 +23,7 @@ function App() {
   });
 
   return (
+    // every time we change a value in one of the contexts provider's consumers, all consumers rerender
     <LoginContext.Provider value={{ state, setState }}>
       <div className="App">
         <Router>
@@ -36,56 +37,6 @@ function App() {
             <Route path="/edit" component={EditTicket}></Route>
             <Route path="/create" component={CreateTicket}></Route>
           </Switch>
-
-          {/* {state.showLogin && <Login loginSuccess={loginSuccess} />}
-          {state.showOptionScreen && (
-            <OptionScreen
-              username={state.username}
-              userId={state.userId}
-              showIndividualPage={showIndividualPage}
-              showLoginPage={showLoginPage}
-              setTeamSelected={setTeamSelected}
-              showTeamInventoryPage={showTeamInventoryPage}
-            />
-          )}
-          {state.showInventory && (
-            <Inventory
-              userId={state.userId}
-              username={state.username}
-              showEditTicketPage={showEditTicketPage}
-              showCreateTicketPage={showCreateTicketPage}
-              showOptionPage={showOptionPage}
-              fetchTickets={fetchTicketsIndividual}
-              isTeamPage={false}
-              teamName={"none"}
-            />
-          )}
-          if team inventory page is selected, show only tickets with corresponding team id
-          {state.showTeamInventory && (
-            <Inventory
-              userId={state.userId}
-              username={state.username}
-              showEditTicketPage={showEditTicketPage}
-              showCreateTicketPage={showCreateTicketPage}
-              showOptionPage={showOptionPage}
-              fetchTickets={fetchTicketsTeam}
-              teamName={state.teamName}
-              isTeamPage={true}
-            />
-          )}
-          {state.showEditTicket && (
-            <EditTicket
-              ticket={state.ticket}
-              showInventoryPage={showInventoryPage}
-            />
-          )}
-          {state.showCreateTicket && (
-            <CreateTicket
-              userId={state.userId}
-              showInventoryPage={showInventoryPage}
-              teamSelected={state.teamSelected}
-            />
-          )} */}
         </Router>
       </div>
     </LoginContext.Provider>

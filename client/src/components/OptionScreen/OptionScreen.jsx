@@ -21,6 +21,7 @@ const OptionScreen = () => {
   //of what team the user created the ticket for
   useEffect(() => {
     const getTeams = async () => {
+      console.log("rendering Option screen");
       const teams = await fetchTeams(state.userId);
       //if the array of teams for this user is not empty, set the default team selected
       //to the first team in the list

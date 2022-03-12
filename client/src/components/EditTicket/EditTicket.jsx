@@ -9,9 +9,9 @@ const EditTicket = () => {
   const history = useHistory();
 
   const [ticketInfo, setTicketInfo] = useState({
-    shortDescription: ticket.short_description,
-    fullDescription: ticket.full_description,
-    status: ticket.status,
+    shortDescription: state.ticketObj.short_description,
+    fullDescription: state.ticketObj.full_description,
+    status: state.ticketObj.status,
     message: "",
   });
 
@@ -43,7 +43,7 @@ const EditTicket = () => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        ticketId: ticket.ticket_id,
+        ticketId: state.ticketObj.ticket_id,
         shortDescription: ticketInfo.shortDescription,
         fullDescription: ticketInfo.fullDescription,
         status: ticketInfo.status,
@@ -66,7 +66,7 @@ const EditTicket = () => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        ticketId: ticket.ticket_id,
+        ticketId: state.ticketObj.ticket_id,
       }),
     };
 
@@ -90,7 +90,7 @@ const EditTicket = () => {
     <div className="body">
       <header className="header">
         <div className="back-box">
-          <button id="back" onClick={history.push("/inventory")}>
+          <button id="back" onClick={() => history.push("/inventory")}>
             Back to Inventory
           </button>
         </div>
@@ -119,9 +119,9 @@ const EditTicket = () => {
         </thead>
         <tbody id="table-body">
           <tr>
-            <td>{ticket.ticket_id}</td>
-            <td>{ticket.creator_id}</td>
-            <td>{new Date(ticket.date_created).toLocaleString()}</td>
+            <td>{state.ticketObj.ticket_id}</td>
+            <td>{state.ticketObj.creator_id}</td>
+            <td>{new Date(state.ticketObj.date_created).toLocaleString()}</td>
             <td>
               <textarea
                 className="textarea"
@@ -142,7 +142,8 @@ const EditTicket = () => {
               />
             </td>
             <td>
-              {ticket.status == "open" && (
+              {/* set initial setting for select menu */}
+              {state.ticketObj.status == "open" && (
                 <select onChange={(e) => setStatus(e.target.value)}>
                   <option value="open" selected>
                     Open
@@ -150,7 +151,7 @@ const EditTicket = () => {
                   <option value="closed">Closed</option>
                 </select>
               )}
-              {ticket.status == "closed" && (
+              {state.ticketObj.status == "closed" && (
                 <select onChange={(e) => setStatus(e.target.value)}>
                   <option value="open">Open</option>
                   <option value="closed" selected>

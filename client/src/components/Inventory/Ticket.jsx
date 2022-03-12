@@ -3,7 +3,7 @@ import { LoginContext } from "../../Contexts/LoginContext.js";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-const Ticket = ({ ticketObj }) => {
+const Ticket = ({ ticketObj, clickTicket }) => {
   //todo:clean this up
   const ticketId = ticketObj.ticket_id;
   const creatorId = ticketObj.creator_id;
@@ -16,14 +16,16 @@ const Ticket = ({ ticketObj }) => {
   const history = useHistory();
 
   //open up ticket editor component and edit this ticket
-  const editTicket = (e) => {
-    e.preventDefault();
-    setState({ ...state, ticketObj: ticketObj }, () => history.push("/edit"));
-  };
+  // const editTicket = (e) => {
+  //   e.preventDefault();
+  //   setState({ ...state, ticketObj: ticketObj });
+  //   clickTicket(ticketObj);
+  // };
 
   //return a new row in the table containing all information for this ticket
   return (
-    <tr onClick={editTicket} id="trow">
+    // onClick={editTicket}
+    <tr id="trow" onClick={() => clickTicket(ticketObj)}>
       <td>{ticketId}</td>
       <td>{creatorId}</td>
       <td>{new Date(dateCreated).toLocaleString()}</td>

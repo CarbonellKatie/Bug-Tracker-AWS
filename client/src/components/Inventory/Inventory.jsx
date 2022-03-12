@@ -12,6 +12,7 @@ const Inventory = () => {
   const [tickets, setTickets] = useState([]);
   const { state, setState } = useContext(LoginContext);
 
+  const history = useHistory();
   //on page load... get tickets from backend by making http request and update the state to hold tickets
   //getTickets function is passed in from App component, and will fetch tickets from backend via
   //http request
@@ -58,6 +59,13 @@ const Inventory = () => {
     const data = res.json();
     return data;
   };
+
+  const clickTicket = (ticket) => {
+    console.log("HERE");
+    setState({ ...state, ticketObj: ticket });
+    history.push("/edit");
+  };
+
   return (
     <div className="body">
       <header className="header">
@@ -102,7 +110,7 @@ const Inventory = () => {
         function to toggle the visibility of the edit ticket page */}
         <tbody id="table-body">
           {tickets?.map((ticket, index) => (
-            <Ticket key={index} ticketObj={ticket} />
+            <Ticket key={index} ticketObj={ticket} clickTicket={clickTicket} />
           ))}
         </tbody>
       </table>
