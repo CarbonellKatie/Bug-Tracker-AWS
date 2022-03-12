@@ -24,7 +24,7 @@ const OptionScreen = () => {
       const teams = await fetchTeams(state.userId);
       //if the array of teams for this user is not empty, set the default team selected
       //to the first team in the list
-      console.log(teams.teams);
+      // console.log(teams.teams);
       setTeams({
         teamObjects: teams.teams,
         teamSelected: teams.teams.length > 0 ? teams.teams[0].team_id : 0,
@@ -53,14 +53,15 @@ const OptionScreen = () => {
   //set team selected in App state using Contexts
   //change team selected when user selects a different team in the drop down menu
   const setTeam = (e) => {
-    const teamSelected = e.nativeEvent.target.value;
+    const newTeamSelected = e.nativeEvent.target.value;
+    console.log(newTeamSelected);
     const obj = {
-      ...state,
-      teamSelectedId: teamSelected,
+      ...teams,
+      teamSelected: newTeamSelected,
       teamSelectedName: e.target.value,
     };
     console.log(obj);
-    setState(obj);
+    setTeams(obj);
   };
 
   //called when "view team tickets" button is pressed after user selects team from drop down menu

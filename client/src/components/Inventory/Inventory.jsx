@@ -45,9 +45,9 @@ const Inventory = () => {
 
   //fetch all tickets associated with the given teamid via http request
   const fetchTicketsTeam = async () => {
-    console.log(state.teamSelected);
+    console.log(state.teamSelectedId);
     const res = await fetch(
-      `http://localhost:3001/inventory/teams/tickets/${state.teamSelected}`,
+      `http://localhost:3001/inventory/teams/tickets/${state.teamSelectedId}`,
       {
         headers: {
           "Content-Type": "application/json",
