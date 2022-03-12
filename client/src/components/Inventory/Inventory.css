@@ -29,13 +29,6 @@ tr:nth-child(odd) {
   background-color: rgb(207, 193, 193);
 }
 
-/* tr {
-  cursor: pointer;
-}
-tr:hover {
-  background-color: rgb(182, 140, 140);
-} */
-
 #trow {
   cursor: pointer;
 }
@@ -83,7 +76,7 @@ td {
   font-size: 1rem;
 }
 
-body {
+/* body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -91,7 +84,7 @@ body {
   background-color: rgb(228, 220, 215) !important;
   width: 100vw !important;
   height: 100vh !important;
-}
+} */
 
 .header {
   min-height: 30vh;

@@ -27,12 +27,18 @@ class DbService {
   }
   //async function will always return a promise
   //want functions in this class to return promises so we can send & process data in another class
+
+  //get all tickets associated with this user Id
   async getAllData(userId) {
     //wrap in try catch block to catch any errors that the .catch of a promise would have caught
     try {
       //const will only be given a value after the promise resolves
       const response = await new Promise((resolve, reject) => {
-        const query = "SELECT * FROM tickets WHERE creator_id = ?";
+        // const query = "SELECT * FROM tickets WHERE creator_id = ?";
+        //select ticket information, including all information in the ticket table. Use teamId and creator_id to find
+        //the team name and usernam of the creator from teams and users table
+        const query =
+          "SELECT tickets.*, users.username, teams.name FROM tickets JOIN users ON tickets.creator_id = users.user_id LEFT OUTER JOIN teams ON tickets.team_id = teams.team_id";
         pool.query(query, [userId], (error, results) => {
           if (error) {
             reject(new Error(error.message));
@@ -76,7 +82,8 @@ class DbService {
       const { userId, shortDescription, fullDescription, status, teamId } =
         ticketObj;
       const ticketId = await new Promise((resolve, reject) => {
-        const query = "INSERT INTO tickets VALUES(?, ?, ?, ?, ?, ?, ?)";
+        const query =
+          "INSERT INTO tickets (ticket_id, team_id, creator_id, date_created, short_description, full_description, status) VALUES(?, ?, ?, ?, ?, ?, ?)";
         pool.query(
           query,
           [

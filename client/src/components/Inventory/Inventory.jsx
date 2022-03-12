@@ -67,7 +67,7 @@ const Inventory = () => {
   };
 
   return (
-    <div className="body">
+    <div className="container">
       <header className="header">
         <div className="back-box">
           {/* button to return to previous page */}
@@ -98,8 +98,9 @@ const Inventory = () => {
       <table className="table">
         <thead className="thead-dark">
           <tr>
-            <th>Ticket #</th>
+            <th>Ticket Number</th>
             <th>Ticket Creator ID</th>
+            <th>Associated Team</th>
             <th>Date Created</th>
             <th>Short Description</th>
             <th>Status</th>

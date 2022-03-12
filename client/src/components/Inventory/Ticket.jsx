@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 const Ticket = ({ ticketObj, clickTicket }) => {
-  //todo:clean this up
+  //ticket info
   const ticketId = ticketObj.ticket_id;
   const creatorId = ticketObj.creator_id;
   const dateCreated = new Date(ticketObj.date_created).toLocaleString();
@@ -12,22 +12,23 @@ const Ticket = ({ ticketObj, clickTicket }) => {
   const longDescription = ticketObj.long_description;
   const status = ticketObj.status;
 
+  //creator information / team information
+  const teamId = ticketObj.team_id > 0 ? `Team ID: ${ticketObj.team_id}` : "";
+  const teamName = ticketObj.name != null ? ticketObj.name : "No Team Assigned";
+  const creatorName = ticketObj.username;
+
   const { state, setState } = useContext(LoginContext);
   const history = useHistory();
 
-  //open up ticket editor component and edit this ticket
-  // const editTicket = (e) => {
-  //   e.preventDefault();
-  //   setState({ ...state, ticketObj: ticketObj });
-  //   clickTicket(ticketObj);
-  // };
-
   //return a new row in the table containing all information for this ticket
   return (
-    // onClick={editTicket}
     <tr id="trow" onClick={() => clickTicket(ticketObj)}>
       <td>{ticketId}</td>
       <td>{creatorId}</td>
+      <td>
+        <p className="fw-bold mb-1">{teamName}</p>
+        <p className="text-muted mb-0">{teamId}</p>
+      </td>
       <td>{new Date(dateCreated).toLocaleString()}</td>
       <td className="description">{shortDescription}</td>
       <td>{status}</td>
