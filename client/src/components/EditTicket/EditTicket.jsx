@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./EditTicket.css";
+import { LoginContext } from "../../Contexts/LoginContext.js";
 
-const EditTicket = ({ ticket, showInventoryPage, teamSelected }) => {
-  //   useEffect(() => {});
+const EditTicket = () => {
+  //hooks must be inside body of functional component
+  const { state, setState } = useContext(LoginContext);
+  const history = useHistory();
 
   const [ticketInfo, setTicketInfo] = useState({
     shortDescription: ticket.short_description,
@@ -30,6 +34,9 @@ const EditTicket = ({ ticket, showInventoryPage, teamSelected }) => {
   };
 
   const submitClick = async () => {
+    //get the ticket object that was clicked on (stored in context when ticket is clicked)
+    const ticket = state.ticketObj;
+
     const params = {
       method: "PUT",
       headers: {
@@ -70,7 +77,7 @@ const EditTicket = ({ ticket, showInventoryPage, teamSelected }) => {
     } else {
       setMessage("Error: Ticket with given ID could not be found");
     }
-    showInventoryPage();
+    history.push("/inventory");
   };
 
   //additional styling if wanted later
@@ -83,7 +90,7 @@ const EditTicket = ({ ticket, showInventoryPage, teamSelected }) => {
     <div className="body">
       <header className="header">
         <div className="back-box">
-          <button id="back" onClick={showInventoryPage}>
+          <button id="back" onClick={history.push("/inventory")}>
             Back to Inventory
           </button>
         </div>

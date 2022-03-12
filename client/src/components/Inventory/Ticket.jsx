@@ -1,5 +1,9 @@
 import EditTicket from "../EditTicket/EditTicket.jsx";
-const Ticket = ({ ticketObj, showEditTicketPage }) => {
+import { LoginContext } from "../../Contexts/LoginContext.js";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+
+const Ticket = ({ ticketObj }) => {
   //todo:clean this up
   const ticketId = ticketObj.ticket_id;
   const creatorId = ticketObj.creator_id;
@@ -8,10 +12,13 @@ const Ticket = ({ ticketObj, showEditTicketPage }) => {
   const longDescription = ticketObj.long_description;
   const status = ticketObj.status;
 
+  const { state, setState } = useContext(LoginContext);
+  const history = useHistory();
+
   //open up ticket editor component and edit this ticket
   const editTicket = (e) => {
     e.preventDefault();
-    showEditTicketPage(ticketObj);
+    setState({ ...state, ticketObj: ticketObj }, () => history.push("/edit"));
   };
 
   //return a new row in the table containing all information for this ticket

@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoginContext } from "../../Contexts/LoginContext";
+import { useHistory, Link } from "react-router-dom";
 import "./CreateTicket.css";
 
 const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
+  const { state } = useContext(LoginContext);
+
   //ticket properties and message to alert user that ticket was/was not added successfully
   const [ticketInfo, setTicketInfo] = useState({
     shortDescription: "",
@@ -48,8 +52,8 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        userId: userId,
-        teamId: teamSelected,
+        userId: state.userId,
+        teamId: state.teamSelectedId,
         shortDescription: ticketInfo.shortDescription,
         fullDescription: ticketInfo.fullDescription,
         status: ticketInfo.status,
@@ -72,9 +76,9 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
       <header className="header">
         <div className="back-box">
           {/* return to inventory page */}
-          <button id="back" onClick={showInventoryPage}>
+          <Link id="back" to="/inventory">
             Back to Inventory
-          </button>
+          </Link>
         </div>
 
         <div className="text-box">

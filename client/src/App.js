@@ -19,6 +19,7 @@ function App() {
     loggedIn: false,
     teamSelectedId: -1,
     teamSelectedName: "",
+    ticketObj: null,
   });
 
   return (
@@ -32,6 +33,8 @@ function App() {
             <Route exact path="/" component={Login}></Route>
             <Route path="/options" component={OptionScreen}></Route>
             <Route path="/inventory" component={Inventory}></Route>
+            <Route path="/edit" component={EditTicket}></Route>
+            <Route path="/create" component={CreateTicket}></Route>
           </Switch>
 
           {/* {state.showLogin && <Login loginSuccess={loginSuccess} />}
