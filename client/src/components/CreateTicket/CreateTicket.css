@@ -4,17 +4,17 @@
   box-sizing: border-box;
 }
 
-textarea,
+/* textarea,
 select {
   background-color: rgb(231, 223, 223);
   resize: vertical;
   padding: 10px;
-}
+} */
 
-#EditTable {
+/* #EditTable {
   min-width: 90% !important;
   max-width: 90% !important;
-}
+} */
 
 /* input {
   background-color: rgb(231, 223, 223);
@@ -22,7 +22,7 @@ select {
   text-align: center;
 } */
 
-table {
+/* table {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   border-collapse: collapse;
@@ -68,9 +68,9 @@ th,
 td {
   padding: 10px;
   /* text-align: center !important; */
-  /* vertical-align: top !important; */
-  border: 2px solid rgb(54, 54, 54);
-}
+/* vertical-align: top !important; 
+  
+} */
 
 #status-select {
   text-align: center;

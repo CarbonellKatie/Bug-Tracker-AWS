@@ -1,0 +1,23 @@
+#mynav {
+  padding-top: 0px !important;
+  background-color: rgb(214, 231, 190) !important;
+}
+.nav-item {
+  margin-left: 20px;
+  padding-top: 0px !important;
+  margin-top: 25px !important;
+  font-size: 20px !important;
+  color: black;
+  font-weight: bold !important;
+}
+.logo {
+  margin-left: 20px !important;
+  margin-top: 20px !important;
+}
+#logo-text {
+  margin-top: 25px !important;
+  padding-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-size: 20px;
+  font-family: "Brush Script MT";
+}

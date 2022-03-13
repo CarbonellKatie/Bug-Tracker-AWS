@@ -5,6 +5,11 @@ import { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { LoginContext } from "../../Contexts/LoginContext";
 import "./OptionScreen.css";
+
+//if we are in production mode, do not prepend localhost:3001, nginx will do that for us
+const API_URL =
+  process.env.NODE_ENV == "production" ? "" : "http://localhost:3001";
+
 const OptionScreen = () => {
   const history = useHistory();
   //keep track of the team names that will be put in the drop down menu and the name of the team selected
@@ -43,10 +48,7 @@ const OptionScreen = () => {
         "Content-Type": "application/json",
       },
     };
-    const results = await fetch(
-      `http://localhost:3001/inventory/teams/${userId}`,
-      params
-    );
+    const results = await fetch(`${API_URL}/inventory/teams/${userId}`, params);
     const teams = await results.json();
     return teams;
   };

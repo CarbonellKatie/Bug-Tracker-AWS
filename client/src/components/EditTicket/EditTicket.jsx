@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./EditTicket.css";
 import { LoginContext } from "../../Contexts/LoginContext.js";
+//if we are in production mode, do not prepend localhost:3001, nginx will do that for us
+const API_URL =
+  process.env.NODE_ENV == "production" ? "" : "http://localhost:3001";
 
 const EditTicket = () => {
   //hooks must be inside body of functional component
@@ -50,7 +53,7 @@ const EditTicket = () => {
       }),
     };
     //make PUT request to backend to update the ticket with this ticketid using information from state
-    const res = await fetch("http://localhost:3001/inventory", params);
+    const res = await fetch(`${API_URL}/inventory`, params);
     const response = await res.json();
     if (response.success == true) {
       setMessage("Ticket successfully updated.");
@@ -70,7 +73,7 @@ const EditTicket = () => {
       }),
     };
 
-    const res = await fetch("http://localhost:3001/inventory", params);
+    const res = await fetch(`${API_URL}/inventory`, params);
     const response = await res.json();
     if (response.success == true) {
       setMessage("Ticket successfully deleted.");

@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
 import { useHistory, Link } from "react-router-dom";
 import "./CreateTicket.css";
+//if we are in production mode, do not prepend localhost:3001, nginx will do that for us
+const API_URL =
+  process.env.NODE_ENV == "production" ? "" : "http://localhost:3001";
 
 const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
   const { state } = useContext(LoginContext);
@@ -62,7 +65,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
 
     //make http request and await response, then evaluate response success and display
     //message to indicate success or failure of ticket add
-    const res = await fetch("http://localhost:3001/inventory", requestOptions);
+    const res = await fetch(`${API_KEY}/inventory`, requestOptions);
     const response = await res.json();
     if (response.success == true) {
       addSuccess();
@@ -72,7 +75,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
   };
 
   return (
-    <div className="body">
+    <div className="container">
       <header className="header">
         <div className="back-box">
           {/* return to inventory page */}
@@ -91,7 +94,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
       <p id="addMessage">{ticketInfo.message}</p>
       {/* table to display input fields for user to create a ticket */}
       <table id="EditTable">
-        <thead className="thead-dark">
+        <thead className="bg-dark">
           <tr>
             <th>Short Description</th>
             <th>Full Description</th>

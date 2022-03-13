@@ -31,7 +31,14 @@ const Ticket = ({ ticketObj, clickTicket }) => {
       </td>
       <td>{new Date(dateCreated).toLocaleString()}</td>
       <td className="description">{shortDescription}</td>
-      <td>{status}</td>
+      <td>
+        {status == "open" && (
+          <span className="badge badge-success rounded-pill">Open</span>
+        )}
+        {status == "closed" && (
+          <span className="badge badge-secondary rounded-pill">Closed</span>
+        )}
+      </td>
     </tr>
   );
 };
