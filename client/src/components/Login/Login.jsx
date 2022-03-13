@@ -80,7 +80,7 @@ const Login = () => {
     <div id="parent">
       <section id="main" className="Form my-4 mx-5">
         <div className="container">
-          <div className="row no-gutters">
+          <div className="row no-gutters row-style">
             <div className="col-lg-5">
               <img id="loginImg" src={backgroundImg} />
             </div>

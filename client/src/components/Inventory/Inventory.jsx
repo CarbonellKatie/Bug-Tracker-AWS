@@ -71,35 +71,30 @@ const Inventory = () => {
     <div>
       <Navbar />
       <div className="container">
-        {/* <div className="back-box">
+        <div className="back-box">
           <Link id="back" to="/options">
             Back to Menu
           </Link>
-        </div> */}
-
-        <h1 className="text-center">Showing Tickets for {state.username}</h1>
-        {/* <div className="text-box">
-        <h1 className="heading-primary">
-          <span className="heading-primary-main">Ticket Management System</span>
-          change header to display info about current page
-          <span className="heading-primary-sub">
-            {state.isTeamPage
-              ? `Showing Tickets for Team: ${state.teamName}`
-              : `Showing Tickets for ${state.username}`}
-          </span>
-        </h1>
-      </div> */}
-        {/* </header> */}
-        {/* create ticket button, switch to Create Ticket Page on click */}
-        <Link to="/create" id="create-ticket">
-          Create New Ticket
-        </Link>
+        </div>
+        <br></br>
+        <div className="row no-gutters">
+          <div className="col-lg-5">
+            <h2>Showing Tickets for {state.username}</h2>
+          </div>
+          <div className="col-lg-2 create-div">
+            {/* create ticket button, switch to Create Ticket Page on click */}
+            <Link to="/create" id="create-ticket-btn">
+              Create Ticket
+            </Link>
+          </div>
+        </div>
+        <hr></hr>
         {/* create tickets table to display user or team tickets */}
-        <table className="table align-middle mb-0 my-3 bg-white table-striped">
+        <table className="table table-bordered align-middle mb-0 my-3 bg-white table-striped">
           <thead className="bg-light">
             <tr>
               <th>Ticket Number</th>
-              <th>Ticket Creator ID</th>
+              <th>Ticket Creator</th>
               <th>Associated Team</th>
               <th>Date Created</th>
               <th>Short Description</th>

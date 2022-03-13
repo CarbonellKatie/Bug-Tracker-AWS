@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { LoginContext } from "../../Contexts/LoginContext";
 import { useHistory, Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar.jsx";
 import "./CreateTicket.css";
 //if we are in production mode, do not prepend localhost:3001, nginx will do that for us
 const API_URL =
@@ -75,75 +76,144 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
   };
 
   return (
-    <div className="container">
-      <header className="header">
+    <div>
+      <Navbar />
+      <div className="container">
         <div className="back-box">
           {/* return to inventory page */}
           <Link id="back" to="/inventory">
             Back to Inventory
           </Link>
         </div>
+        <br></br>
+        <h3>Create new Ticket</h3>
+        <hr></hr>
+        <p id="addMessage">{ticketInfo.message}</p>
+        {/* table to display input fields for user to create a ticket */}
+        {/* <table id="EditTable">
+          <thead className="bg-light">
+            <tr>
+              <th>Short Description</th>
+              <th>Full Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr>
+              <td>
+                <textarea
+                  name="shortDescription"
+                  className="textarea"
+                  rows={4}
+                  maxLength={200}
+                  value={ticketInfo.shortDescription}
+                  onChange={(e) => setShortDescription(e.target.value)}
+                />
+              </td>
+              <td>
+                <textarea
+                  name="fullDescription"
+                  id="textarea"
+                  maxLength={2000}
+                  rows={4}
+                  value={ticketInfo.fullDescription}
+                  onChange={(e) => setFullDescription(e.target.value)}
+                />
+              </td>
+              <td>
+                <select
+                  id="status-select"
+                  defaultValue="open"
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option value="open">Open</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table> */}
 
-        <div className="text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary-main">Create New Ticket</span>
-          </h1>
-        </div>
-      </header>
-
-      <p id="addMessage">{ticketInfo.message}</p>
-      {/* table to display input fields for user to create a ticket */}
-      <table id="EditTable">
-        <thead className="bg-dark">
-          <tr>
-            <th>Short Description</th>
-            <th>Full Description</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="table-body">
-          <tr>
-            <td>
-              <textarea
-                name="shortDescription"
-                className="textarea"
-                rows={4}
-                maxLength={200}
-                value={ticketInfo.shortDescription}
-                onChange={(e) => setShortDescription(e.target.value)}
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Email"
               />
-            </td>
-            <td>
-              <textarea
-                name="fullDescription"
-                id="textarea"
-                maxLength={2000}
-                rows={4}
-                value={ticketInfo.fullDescription}
-                onChange={(e) => setFullDescription(e.target.value)}
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword4"
+                placeholder="Password"
               />
-            </td>
-            <td>
-              <select
-                id="status-select"
-                defaultValue="open"
-                onChange={(e) => setStatus(e.target.value)}
-              >
-                <option value="open">Open</option>
-                <option value="closed">Closed</option>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="1234 Main St"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress2"
+              placeholder="Apartment, studio, or floor"
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity" />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
               </select>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      {/* do not show the submit button if the tickets has already been submitted */}
-      {ticketInfo.submitVis && (
-        <button id="create-ticket" onClick={submitClick}>
-          Submit Ticket
-        </button>
-      )}
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
 
-      <br></br>
+          {ticketInfo.submitVis && (
+            <button
+              id="create-ticket"
+              className="btn btn-primary"
+              onClick={submitClick}
+            >
+              Submit Ticket
+            </button>
+          )}
+        </form>
+
+        {/* do not show the submit button if the tickets has already been submitted */}
+
+        <br></br>
+      </div>
     </div>
   );
 };

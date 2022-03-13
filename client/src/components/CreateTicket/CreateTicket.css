@@ -76,19 +76,17 @@ td {
   text-align: center;
   vertical-align: middle;
 }
-#create-ticket,
-#submit {
+#create-ticket {
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
   background-color: rgb(236, 233, 233);
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   display: block;
   margin-top: 1.5rem;
   cursor: pointer;
-  width: 30rem;
 }
 
 #addMessage {
@@ -104,11 +102,6 @@ td {
   /* display: block; */
   line-height: 1em; /* a */
   max-height: 4em; /* a x number of line to show (ex : 2 line)  */
-}
-
-.create-ticket {
-  cursor: pointer;
-  font-size: 1rem;
 }
 
 /* body {
@@ -137,27 +130,8 @@ td {
 
 .back-box {
   position: absolute;
-  top: 20px;
+  top: 130px;
   left: 40px;
-}
-
-#back {
-  font-size: 1rem;
-  color: rgb(235, 227, 227);
-  padding: 10px;
-  border: 3px solid rgb(211, 205, 205);
-  border-radius: 4px !important;
-  background-color: rgba(255, 255, 255, 0.26);
-  cursor: pointer;
-}
-
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 1000;
 }
 
 .heading-primary {

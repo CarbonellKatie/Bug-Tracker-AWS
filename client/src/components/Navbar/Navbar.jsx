@@ -16,13 +16,12 @@ const Navbar = () => {
         />
         <span id="logo-text">Bug Tracker</span>
 
-        <Link className="nav-item" to="/options">
+        <Link id="home" className="nav-item" to="/options">
           Home
         </Link>
-        <Link className="nav-item" to="/">
+        <Link id="logout" className="nav-item" to="/">
           Logout
         </Link>
-        {/* </div> */}
       </nav>
     </div>
   );

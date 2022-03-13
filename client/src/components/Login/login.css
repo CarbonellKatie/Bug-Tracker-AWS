@@ -16,7 +16,7 @@ body {
 #main {
   max-height: 100% !important;
 }
-.row {
+.row-style {
   background: white;
   border-radius: 30px;
   box-shadow: 12px 12px 22px grey;
@@ -56,8 +56,6 @@ body {
   color: darkred;
   text-decoration: underline;
   font-weight: bold;
-}
-#parent {
 }
 
 /* #cover {

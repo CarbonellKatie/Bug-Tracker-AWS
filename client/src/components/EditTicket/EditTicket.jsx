@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./EditTicket.css";
 import { LoginContext } from "../../Contexts/LoginContext.js";
+import Navbar from "../Navbar/Navbar.jsx";
+
 //if we are in production mode, do not prepend localhost:3001, nginx will do that for us
 const API_URL =
   process.env.NODE_ENV == "production" ? "" : "http://localhost:3001";
@@ -90,94 +92,88 @@ const EditTicket = () => {
   //           </span>
 
   return (
-    <div className="body">
-      <header className="header">
+    <div>
+      <Navbar />
+      <div className="container">
         <div className="back-box">
           <button id="back" onClick={() => history.push("/inventory")}>
             Back to Inventory
           </button>
         </div>
 
-        <div className="text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary-main">
-              Edit Ticket Information
-            </span>
-          </h1>
-        </div>
-      </header>
+        <p id="editMessage">{ticketInfo.message}</p>
 
-      <p id="editMessage">{ticketInfo.message}</p>
+        <table className="table align-middle mb-0 my-3 bg-white table-striped">
+          <thead className="bg-light">
+            <tr>
+              <th>Ticket Number</th>
+              <th>Ticket Creator ID</th>
+              <th>Date Created</th>
+              <th>Short Description</th>
+              <th>Full Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
 
-      <table id="EditTable">
-        <thead className="thead-dark">
-          <tr>
-            <th>Ticket #</th>
-            <th>Ticket Creator ID</th>
-            <th>Date Created</th>
-            <th>Short Description</th>
-            <th>Full Description</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="table-body">
-          <tr>
-            <td>{state.ticketObj.ticket_id}</td>
-            <td>{state.ticketObj.creator_id}</td>
-            <td>{new Date(state.ticketObj.date_created).toLocaleString()}</td>
-            <td>
-              <textarea
-                className="textarea"
-                rows={4}
-                maxLength={200}
-                value={ticketInfo.shortDescription}
-                onChange={(e) => setShortDescription(e.target.value)}
-              />
-            </td>
-            <td>
-              <textarea
-                name="fullDesc"
-                id="textarea"
-                maxLength={2000}
-                rows={4}
-                value={ticketInfo.fullDescription}
-                onChange={(e) => setFullDescription(e.target.value)}
-              />
-            </td>
-            <td>
-              {/* set initial setting for select menu */}
-              {state.ticketObj.status == "open" && (
-                <select onChange={(e) => setStatus(e.target.value)}>
-                  <option value="open" selected>
-                    Open
-                  </option>
-                  <option value="closed">Closed</option>
-                </select>
-              )}
-              {state.ticketObj.status == "closed" && (
-                <select onChange={(e) => setStatus(e.target.value)}>
-                  <option value="open">Open</option>
-                  <option value="closed" selected>
-                    Closed
-                  </option>
-                </select>
-              )}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div id="buttons">
-        <div id="center">
-          <button id="edit-ticket" onClick={submitClick}>
-            Submit
-          </button>
-          <button id="delete-ticket" onClick={deleteClick}>
-            Delete Ticket
-          </button>
+          <tbody id="table-body">
+            <tr>
+              <td>{state.ticketObj.ticket_id}</td>
+              <td>{state.ticketObj.creator_id}</td>
+              <td>{new Date(state.ticketObj.date_created).toLocaleString()}</td>
+              <td>
+                <textarea
+                  className="textarea"
+                  rows={4}
+                  maxLength={200}
+                  value={ticketInfo.shortDescription}
+                  onChange={(e) => setShortDescription(e.target.value)}
+                />
+              </td>
+              <td>
+                <textarea
+                  name="fullDesc"
+                  id="textarea"
+                  maxLength={2000}
+                  rows={4}
+                  value={ticketInfo.fullDescription}
+                  onChange={(e) => setFullDescription(e.target.value)}
+                />
+              </td>
+              <td>
+                {/* set initial setting for select menu */}
+                {state.ticketObj.status == "open" && (
+                  <select onChange={(e) => setStatus(e.target.value)}>
+                    <option value="open" selected>
+                      Open
+                    </option>
+                    <option value="closed">Closed</option>
+                  </select>
+                )}
+                {state.ticketObj.status == "closed" && (
+                  <select onChange={(e) => setStatus(e.target.value)}>
+                    <option value="open">Open</option>
+                    <option value="closed" selected>
+                      Closed
+                    </option>
+                  </select>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="buttons">
+          <div id="center">
+            <button id="edit-ticket" onClick={submitClick}>
+              Submit
+            </button>
+            <button id="delete-ticket" onClick={deleteClick}>
+              Delete Ticket
+            </button>
+          </div>
         </div>
+
+        <br></br>
       </div>
-
-      <br></br>
     </div>
   );
 };

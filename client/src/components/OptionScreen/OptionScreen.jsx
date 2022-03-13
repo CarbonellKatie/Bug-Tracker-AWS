@@ -4,6 +4,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { LoginContext } from "../../Contexts/LoginContext";
+import Navbar from "../Navbar/Navbar.jsx";
 import "./OptionScreen.css";
 
 //if we are in production mode, do not prepend localhost:3001, nginx will do that for us
@@ -91,8 +92,10 @@ const OptionScreen = () => {
   };
 
   return (
-    <div className="body">
-      <header className="header">
+    <div>
+      <Navbar />
+      <div className="container">
+        {/* <header className="header"> */}
         <div className="back-box">
           {/* back button to return to login screen */}
           <Link id="back" to="/">
@@ -100,53 +103,44 @@ const OptionScreen = () => {
           </Link>
         </div>
 
-        <div className="text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary-main">
-              Ticket Management System
-            </span>
-            <span className="heading-primary-sub">
-              Options for {state.username}
-            </span>
-          </h1>
-        </div>
-      </header>
+        {/* </header> */}
 
-      <div className="container">
-        <div className="buttons-class">
-          {/* view individual ticket button, take user to individual tickets page and show tickets
+        <div className="container">
+          <div className="buttons-class">
+            {/* view individual ticket button, take user to individual tickets page and show tickets
             that are associated with their userID in the database. Calling the showIndividualPage fuction will
             set the value of teamSelected to 0 in app.js state and show all tickets associated with this user's userId */}
-          <button
-            id="individual"
-            className="option-button"
-            onClick={showPersonalTickets}
-          >
-            View Personal Tickets
-          </button>
-          <br></br>
-          <p>Select Team</p>
-          <div id="team-div">
-            <select
-              id="select-team"
+            <button
+              id="individual"
               className="option-button"
-              onChange={(e) => setTeam(e)}
+              onClick={showPersonalTickets}
             >
-              {/* display all teams the user is in as options in the teams drop down menu */}
-              {teams.teamObjects.map((team, index) => (
-                <option
-                  value={team.team_id}
-                  key={index}
-                  className="option-button"
-                >
-                  {team.name}
-                </option>
-              ))}
-            </select>
-            {/* button to view the selected team's tickets */}
-            <button id="view-team" onClick={showTeamTickets}>
-              View Team Tickets
+              View Personal Tickets
             </button>
+            <br></br>
+            <p>Select Team</p>
+            <div id="team-div">
+              <select
+                id="select-team"
+                className="option-button"
+                onChange={(e) => setTeam(e)}
+              >
+                {/* display all teams the user is in as options in the teams drop down menu */}
+                {teams.teamObjects.map((team, index) => (
+                  <option
+                    value={team.team_id}
+                    key={index}
+                    className="option-button"
+                  >
+                    {team.name}
+                  </option>
+                ))}
+              </select>
+              {/* button to view the selected team's tickets */}
+              <button id="view-team" onClick={showTeamTickets}>
+                View Team Tickets
+              </button>
+            </div>
           </div>
         </div>
       </div>
