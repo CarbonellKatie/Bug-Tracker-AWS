@@ -87,24 +87,36 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
     <div>
       <Navbar />
       <div className="container">
-        <div className="back-box">
-          {/* return to inventory page */}
-          <Link id="back" to="/inventory">
-            Back to Inventory
-          </Link>
-        </div>
         <br></br>
         <div className="col-md-10 form-parent">
-          <h3>Create New Ticket</h3>
-          <h5>
-            {state.teamSelectedId > 0
-              ? `Associated Team: ${state.teamSelectedName}`
-              : `Create Individual Ticket for ${state.username}`}
-          </h5>
+          <div className="row no-gutters mrow">
+            <div className="col-md-9">
+              <div className="row no-gutters">
+                <h3>Create New Ticket</h3>
+              </div>
+              <div className="row no-gutters mrow">
+                <h5>
+                  {state.teamSelectedId > 0
+                    ? `Associated Team: ${state.teamSelectedName}`
+                    : `Create Individual Ticket for ${state.username}`}
+                </h5>
+              </div>
+            </div>
+            <div className="col-md-3 back-class">
+              {/* return to inventory page */}
+              <div id="center-parent">
+                <div id="center-link">
+                  <Link id="back-to-inv" to="/inventory">
+                    Back to Inventory
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
           <hr></hr>
           {/* <p id="addMessage">{ticketInfo.message}</p> */}
           {ticketInfo.message != "" && (
-            <div class="alert alert-success" role="alert">
+            <div className="alert alert-success" role="alert">
               {ticketInfo.message}
             </div>
           )}
