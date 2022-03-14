@@ -12,6 +12,8 @@
 #create-form {
   background-color: rgba(16, 160, 16, 0.13);
   font-size: 1.2rem;
+  /* border: 2px solid rgb(154, 180, 154); */
+  border-radius: 10px;
 }
 
 #create-btn {
@@ -69,9 +71,33 @@
   position: relative;
 }
 
-.back-class {
-  /* background-color: green; */
+#short-description {
+  padding-right: 20px;
+  width: 90%;
 }
+#full-description {
+  width: 90%;
+}
+#status-select {
+  width: 100%;
+}
+
 #mrow {
   margin: 0 !important;
+}
+
+#back-to-inv {
+  font-size: 1rem;
+  padding: 10px;
+  color: rgb(15, 70, 10);
+  padding: 15px;
+  border: 3px solid rgb(158, 175, 153);
+  /* border-radius: 4px !important; */
+  background-color: rgba(173, 219, 163, 0.26) !important;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  /* width: 200px !important; */
+
+  /* margin-bottom: 10px; */
 }

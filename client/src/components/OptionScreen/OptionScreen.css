@@ -9,7 +9,7 @@
 
 #head1 {
   margin-bottom: 5px;
-  margin-top: 80px;
+  margin-top: 60px;
   font-family: copperplate gothic light;
   font-size: 3rem;
 }
@@ -52,32 +52,3 @@
   font-family: copperplate gothic light;
   color: black;
 }
-/* .option-button {
-  padding: 20px;
-  width: 40vw !important;
-  text-align: center;
-  box-sizing: border-box;
-  float: center;
-}
-#individual {
-  margin-right: 10vw;
-  cursor: pointer;
-}
-#select-team {
-  margin-top: 0;
-  width: 20vw !important;
-  cursor: pointer;
-  padding: 20px;
-}
-.buttons-class {
-  width: 40vw !important;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4rem;
-
-  /* float: center !important; */
-/* }
-#view-team {
-  width: 20vw;
-  padding: 20px;
-} */

@@ -113,7 +113,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <hr className="mt-1"></hr>
           {/* <p id="addMessage">{ticketInfo.message}</p> */}
           {ticketInfo.message != "" && (
             <div className="alert alert-success" role="alert">
@@ -124,20 +124,10 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
           {/*  display input fields for user to create a ticket */}
 
           <form onSubmit={submitClick} id="create-form">
-            {/* row 1 */}
-            {/* <div class="form-row px-5 py-4">
-              <div class="form-group col-md-12" id="team-info">
-                <label for="team-name">Associated Team: </label>
-                <p className="fw-bold col-md-3" id="team-name">
-                  {teamName}
-                </p>
-                <p className="text-muted mb-0 col-md-5">{teamId}</p>
-              </div>
-            </div> */}
             {/* row 2 */}
             <div className="form-row px-5">
               <div className="form-group col-md-6 pt-5">
-                <label for="short-Description">Short Description</label>
+                <label for="short-description">Short Description</label>
                 <textarea
                   class="form-control"
                   id="short-description"
@@ -146,11 +136,11 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
                 ></textarea>
               </div>
               <div class="form-group col-md-6 pt-5">
-                <label for="long-description">Full Description</label>
+                <label for="full-description">Full Description</label>
                 <textarea
                   rows="5"
                   class="form-control"
-                  id="long-description"
+                  id="full-description"
                   // placeholder="long description"
                 />
               </div>
