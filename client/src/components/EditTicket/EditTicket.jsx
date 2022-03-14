@@ -136,7 +136,7 @@ const EditTicket = () => {
               <form id="edit-form">
                 {/* row 2 */}
                 <div className="row no-gutters">
-                  <div className="col-md-8 ml-5">
+                  <div className="col-md-10 ml-5 mt-3">
                     <table className="table align-middle mb-0 my-3 bg-white table-striped table-bordered display-table">
                       <thead className="bg-light">
                         <tr>
@@ -203,7 +203,7 @@ const EditTicket = () => {
 
                       {state.ticketObj.status.toLowerCase() == "open" && (
                         <select
-                          id="status-select"
+                          id="edit-status"
                           onChange={(e) => setStatus(e.target.value)}
                         >
                           <option value="open" selected>
@@ -215,7 +215,7 @@ const EditTicket = () => {
                       )}
                       {state.ticketObj.status.toLowerCase() == "closed" && (
                         <select
-                          id="status-select"
+                          id="edit-status"
                           onChange={(e) => setStatus(e.target.value)}
                         >
                           <option value="Open">Open</option>
@@ -245,7 +245,7 @@ const EditTicket = () => {
                 )}
               </form>
               <br></br>
-              <div className="form-row px-5 pb-5 color">
+              <div className="form-row px-5 pb-5 color my-0">
                 <button id="submit-edit-btn" onClick={(e) => submitClick(e)}>
                   Submit
                 </button>

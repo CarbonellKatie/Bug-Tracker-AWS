@@ -10,7 +10,7 @@
   /* background-color: green; */
 }
 #create-form {
-  background-color: rgba(16, 160, 16, 0.13);
+  background-color: rgba(161, 192, 161, 0.13);
   font-size: 1.2rem;
   /* border: 2px solid rgb(154, 180, 154); */
   border-radius: 10px;
@@ -21,15 +21,20 @@
   padding: 10px;
   box-sizing: border-box;
 
-  background-color: rgb(112, 196, 106);
+  background-color: rgba(112, 196, 106, 0.377);
   border: 2px solid green;
-  border-radius: 200px;
+  border-radius: 10px;
   display: block;
   margin-top: 1.5rem;
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
-  width: 40em;
+  width: 100em;
+
+  font-family: copperplate gothic light;
+  color: black;
+  font-size: 18px;
+  /* font-weight: bold; */
 }
 
 #addMessage {
@@ -46,7 +51,7 @@
   padding: 15px;
   border: 3px solid rgb(158, 175, 153);
   /* border-radius: 4px !important; */
-  background-color: rgba(173, 219, 163, 0.26) !important;
+  background-color: rgba(173, 219, 163, 0.02) !important;
   cursor: pointer;
   box-sizing: border-box;
 
@@ -81,23 +86,22 @@
 #status-select {
   width: 100%;
 }
+#enter-ticket-info {
+  text-decoration: underline;
+  /* font-size: px !important; */
+  font-family: copperplate gothic light;
+  color: black;
+}
+#l1 {
+  font-family: copperplate gothic light;
+  color: black;
+}
+
+#l2 {
+  font-family: copperplate gothic light;
+  color: black;
+}
 
 #mrow {
   margin: 0 !important;
-}
-
-#back-to-inv {
-  font-size: 1rem;
-  padding: 10px;
-  color: rgb(15, 70, 10);
-  padding: 15px;
-  border: 3px solid rgb(158, 175, 153);
-  /* border-radius: 4px !important; */
-  background-color: rgba(173, 219, 163, 0.26) !important;
-  cursor: pointer;
-  box-sizing: border-box;
-
-  /* width: 200px !important; */
-
-  /* margin-bottom: 10px; */
 }

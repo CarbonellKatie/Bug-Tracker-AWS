@@ -124,10 +124,17 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
           {/*  display input fields for user to create a ticket */}
 
           <form onSubmit={submitClick} id="create-form">
-            {/* row 2 */}
             <div className="form-row px-5">
-              <div className="form-group col-md-6 pt-5">
-                <label for="short-description">Short Description</label>
+              <div className="form-group col-md-12 pt-5">
+                <h2 id="enter-ticket-info">Enter Ticket Information</h2>
+              </div>
+            </div>
+
+            <div className="form-row px-5">
+              <div className="form-group col-md-6 pt-3">
+                <label id="l1" for="short-description">
+                  Short Description
+                </label>
                 <textarea
                   class="form-control"
                   id="short-description"
@@ -135,8 +142,10 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
                   // placeholder="summary"
                 ></textarea>
               </div>
-              <div class="form-group col-md-6 pt-5">
-                <label for="full-description">Full Description</label>
+              <div class="form-group col-md-6 pt-3">
+                <label id="l2" for="full-description">
+                  Full Description
+                </label>
                 <textarea
                   rows="5"
                   class="form-control"
@@ -147,7 +156,7 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
             </div>
             {/* row 3 */}
             <div className="form-row">
-              <div class="form-group px-5 col-md-4 pt-3">
+              <div class="form-group px-5 col-md-6">
                 <label for="inputState">Status</label>
                 <select
                   id="status-select"
