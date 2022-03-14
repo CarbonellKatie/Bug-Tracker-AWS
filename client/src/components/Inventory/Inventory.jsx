@@ -78,8 +78,12 @@ const Inventory = () => {
         </div>
         <br></br>
         <div className="row no-gutters">
-          <div className="col-lg-5">
-            <h2>Showing Tickets for {state.username}</h2>
+          <div className="col-lg-8">
+            <h2>
+              {state.teamSelectedId > 0
+                ? `Ticket Inventory for ${state.teamSelectedName}`
+                : `Ticket Inventory for ${state.username}`}
+            </h2>
           </div>
           <div className="col-lg-2 create-div">
             {/* create ticket button, switch to Create Ticket Page on click */}
