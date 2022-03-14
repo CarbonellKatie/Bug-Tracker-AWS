@@ -137,7 +137,7 @@ const EditTicket = () => {
                 {/* row 2 */}
                 <div className="row no-gutters">
                   <div className="col-md-8 ml-5">
-                    <table className="table align-middle mb-0 my-3 bg-white table-striped">
+                    <table className="table align-middle mb-0 my-3 bg-white table-striped table-bordered display-table">
                       <thead className="bg-light">
                         <tr>
                           <th>Ticket Number</th>
