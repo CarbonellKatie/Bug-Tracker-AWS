@@ -19,6 +19,10 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
     submitVis: true,
   });
 
+  const teamName =
+    state.teamSelectedId > 0 ? state.teamSelectedName : "No Team Selected";
+  const teamId =
+    state.teamSelectedId > 0 ? `Team Id: ${state.teamSelectedId}` : "";
   //set pieces of the state without resetting other pieces of state to default values on rerender
   const setShortDescription = (value) => {
     let info = { ...ticketInfo, shortDescription: value };
@@ -47,8 +51,12 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
 
   //call this function when the user clicks the submit button on the Create Ticket page
   //make POST http request to backend to create a new ticket with this info
-  const submitClick = async () => {
+  const submitClick = async (e) => {
     //await... wait until data is posted so our inventory renders properly w/ new ticket added
+    e.preventDefault();
+    const shortDescription = e.target.elements[0].value;
+    const fullDescription = e.target.elements[1].value;
+    const status = e.target.elements[2].value;
 
     const requestOptions = {
       method: "POST",
@@ -58,15 +66,15 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
       body: JSON.stringify({
         userId: state.userId,
         teamId: state.teamSelectedId,
-        shortDescription: ticketInfo.shortDescription,
-        fullDescription: ticketInfo.fullDescription,
-        status: ticketInfo.status,
+        shortDescription: shortDescription,
+        fullDescription: fullDescription,
+        status: status,
       }),
     };
 
     //make http request and await response, then evaluate response success and display
     //message to indicate success or failure of ticket add
-    const res = await fetch(`${API_KEY}/inventory`, requestOptions);
+    const res = await fetch(`${API_URL}/inventory`, requestOptions);
     const response = await res.json();
     if (response.success == true) {
       addSuccess();
@@ -86,132 +94,98 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
           </Link>
         </div>
         <br></br>
-        <h3>Create new Ticket</h3>
-        <hr></hr>
-        <p id="addMessage">{ticketInfo.message}</p>
-        {/* table to display input fields for user to create a ticket */}
-        {/* <table id="EditTable">
-          <thead className="bg-light">
-            <tr>
-              <th>Short Description</th>
-              <th>Full Description</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-            <tr>
-              <td>
+        <div className="col-md-10 form-parent">
+          <h3>Create New Ticket</h3>
+          <h5>
+            {state.teamSelectedId > 0
+              ? `Associated Team: ${state.teamSelectedName}`
+              : `Create Individual Ticket for ${state.username}`}
+          </h5>
+          <hr></hr>
+          {/* <p id="addMessage">{ticketInfo.message}</p> */}
+          {ticketInfo.message != "" && (
+            <div class="alert alert-success" role="alert">
+              {ticketInfo.message}
+            </div>
+          )}
+
+          {/*  display input fields for user to create a ticket */}
+
+          <form onSubmit={submitClick} id="create-form">
+            {/* row 1 */}
+            {/* <div class="form-row px-5 py-4">
+              <div class="form-group col-md-12" id="team-info">
+                <label for="team-name">Associated Team: </label>
+                <p className="fw-bold col-md-3" id="team-name">
+                  {teamName}
+                </p>
+                <p className="text-muted mb-0 col-md-5">{teamId}</p>
+              </div>
+            </div> */}
+            {/* row 2 */}
+            <div className="form-row px-5">
+              <div className="form-group col-md-6 pt-5">
+                <label for="short-Description">Short Description</label>
                 <textarea
-                  name="shortDescription"
-                  className="textarea"
-                  rows={4}
-                  maxLength={200}
-                  value={ticketInfo.shortDescription}
-                  onChange={(e) => setShortDescription(e.target.value)}
-                />
-              </td>
-              <td>
+                  class="form-control"
+                  id="short-description"
+                  rows="5"
+                  // placeholder="summary"
+                ></textarea>
+              </div>
+              <div class="form-group col-md-6 pt-5">
+                <label for="long-description">Full Description</label>
                 <textarea
-                  name="fullDescription"
-                  id="textarea"
-                  maxLength={2000}
-                  rows={4}
-                  value={ticketInfo.fullDescription}
-                  onChange={(e) => setFullDescription(e.target.value)}
+                  rows="5"
+                  class="form-control"
+                  id="long-description"
+                  // placeholder="long description"
                 />
-              </td>
-              <td>
+              </div>
+            </div>
+            {/* row 3 */}
+            <div className="form-row">
+              <div class="form-group px-5 col-md-4 pt-3">
+                <label for="inputState">Status</label>
                 <select
                   id="status-select"
-                  defaultValue="open"
+                  class="form-control"
                   onChange={(e) => setStatus(e.target.value)}
                 >
-                  <option value="open">Open</option>
-                  <option value="closed">Closed</option>
+                  <option selected>Open</option>
+                  <option>In Progress</option>
+                  <option>Closed</option>
                 </select>
-              </td>
-            </tr>
-          </tbody>
-        </table> */}
+              </div>
+            </div>
+            <div className="form-row px-5 pb-5">
+              {ticketInfo.submitVis && (
+                <button
+                  type="submit"
+                  id="create-btn"
+                  className="btn btn-primary"
+                  // onClick={submitClick}
+                >
+                  Submit Ticket
+                </button>
+              )}
+            </div>
+            {/* <div class="form-group">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="gridCheck"
+                />
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div> */}
+          </form>
 
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="inputEmail4"
-                placeholder="Email"
-              />
-            </div>
-            <div class="form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword4"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputAddress"
-              placeholder="1234 Main St"
-            />
-          </div>
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputAddress2"
-              placeholder="Apartment, studio, or floor"
-            />
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" />
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip" />
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck" />
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
-          </div>
-
-          {ticketInfo.submitVis && (
-            <button
-              id="create-ticket"
-              className="btn btn-primary"
-              onClick={submitClick}
-            >
-              Submit Ticket
-            </button>
-          )}
-        </form>
-
-        {/* do not show the submit button if the tickets has already been submitted */}
-
+          {/* do not show the submit button if the tickets has already been submitted */}
+        </div>
         <br></br>
       </div>
     </div>

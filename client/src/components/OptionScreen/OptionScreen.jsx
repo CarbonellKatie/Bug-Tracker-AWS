@@ -4,6 +4,8 @@
 import { useEffect, useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { LoginContext } from "../../Contexts/LoginContext";
+import home from "../../images/home-art.png";
+import meeting from "../../images/meeting.png";
 import Navbar from "../Navbar/Navbar.jsx";
 import "./OptionScreen.css";
 
@@ -57,14 +59,17 @@ const OptionScreen = () => {
   //set team selected in App state using Contexts
   //change team selected when user selects a different team in the drop down menu
   const setTeam = (e) => {
-    const newTeamSelected = e.nativeEvent.target.value;
-    console.log(newTeamSelected);
+    const newTeamId = e.nativeEvent.target.value;
+    var newTeamName = e.target.options[e.target.selectedIndex].text;
+    // console.log(text);
+    console.log(newTeamId);
+    // console.log(newTeamName);
     const obj = {
       ...teams,
-      teamSelected: newTeamSelected,
-      teamSelectedName: e.target.value,
+      teamSelectedName: newTeamName,
+      teamSelected: newTeamId,
     };
-    console.log(obj);
+    // console.log(obj);
     setTeams(obj);
   };
 
@@ -94,53 +99,86 @@ const OptionScreen = () => {
   return (
     <div>
       <Navbar />
+      {/* <div className="back-box">
+        <Link id="back" to="/">
+          Back to Login
+        </Link>
+      </div> */}
       <div className="container">
         {/* <header className="header"> */}
-        <div className="back-box">
-          {/* back button to return to login screen */}
-          <Link id="back" to="/">
-            Back to Login
-          </Link>
-        </div>
 
         {/* </header> */}
 
-        <div className="container">
-          <div className="buttons-class">
-            {/* view individual ticket button, take user to individual tickets page and show tickets
+        {/* view individual ticket button, take user to individual tickets page and show tickets
             that are associated with their userID in the database. Calling the showIndividualPage fuction will
             set the value of teamSelected to 0 in app.js state and show all tickets associated with this user's userId */}
-            <button
-              id="individual"
-              className="option-button"
-              onClick={showPersonalTickets}
-            >
-              View Personal Tickets
-            </button>
-            <br></br>
-            <p>Select Team</p>
-            <div id="team-div">
-              <select
-                id="select-team"
-                className="option-button"
-                onChange={(e) => setTeam(e)}
-              >
-                {/* display all teams the user is in as options in the teams drop down menu */}
-                {teams.teamObjects.map((team, index) => (
-                  <option
-                    value={team.team_id}
-                    key={index}
-                    className="option-button"
-                  >
-                    {team.name}
-                  </option>
-                ))}
-              </select>
-              {/* button to view the selected team's tickets */}
-              <button id="view-team" onClick={showTeamTickets}>
-                View Team Tickets
-              </button>
+        <div className="row ">
+          <div className="col-lg-5">
+            {/* sub-row 1 for personal tickets button */}
+            <div className="row ">
+              <div className="col-lg-12">
+                <h1 id="head1">Ticket Manager</h1>
+              </div>
             </div>
+
+            <div className="row ">
+              <div className="col-lg-12">
+                <h4 id="head2">Access team or individual tickets</h4>
+              </div>
+            </div>
+
+            <div className="row no-gutters">
+              <div className="col-lg-12">
+                <label id="team-label" for="select-team">
+                  Select Team
+                </label>
+              </div>
+            </div>
+
+            <div className="row no-gutters">
+              <div className="col-lg-12">
+                <select
+                  id="select-team"
+                  className="option-button"
+                  onChange={(e) => setTeam(e)}
+                >
+                  {/* display all teams the user is in as options in the teams drop down menu */}
+                  {teams.teamObjects.map((team, index) => (
+                    <option
+                      value={team.team_id}
+                      key={index}
+                      className="option-button"
+                    >
+                      {team.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="row no-gutters">
+              <div className="col-lg-12">
+                {/* button to view the selected team's tickets */}
+                <button id="view-team" onClick={showTeamTickets}>
+                  View Team Tickets
+                </button>
+              </div>
+            </div>
+
+            <div className="row no-gutters">
+              <div className="col-lg-12">
+                <button
+                  id="individual"
+                  className="option-button"
+                  onClick={showPersonalTickets}
+                >
+                  View Personal Tickets
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <img id="home-img" src={meeting} alt="person sitting at desk"></img>
           </div>
         </div>
       </div>

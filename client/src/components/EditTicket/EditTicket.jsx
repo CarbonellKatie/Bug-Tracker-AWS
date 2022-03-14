@@ -141,19 +141,30 @@ const EditTicket = () => {
               </td>
               <td>
                 {/* set initial setting for select menu */}
-                {state.ticketObj.status == "open" && (
+                {state.ticketObj.status.toLowerCase() == "open" && (
                   <select onChange={(e) => setStatus(e.target.value)}>
                     <option value="open" selected>
                       Open
                     </option>
                     <option value="closed">Closed</option>
+                    <option value="In Progress">In Progress</option>
                   </select>
                 )}
-                {state.ticketObj.status == "closed" && (
+                {state.ticketObj.status.toLowerCase() == "closed" && (
                   <select onChange={(e) => setStatus(e.target.value)}>
-                    <option value="open">Open</option>
-                    <option value="closed" selected>
+                    <option value="Open">Open</option>
+                    <option selected value="Closed">
                       Closed
+                    </option>
+                    <option value="In Progress">In Progress</option>
+                  </select>
+                )}
+                {state.ticketObj.status.toLowerCase() == "in progress" && (
+                  <select onChange={(e) => setStatus(e.target.value)}>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                    <option selected value="In Progress">
+                      In Progress
                     </option>
                   </select>
                 )}

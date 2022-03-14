@@ -90,8 +90,11 @@ const Inventory = () => {
         </div>
         <hr></hr>
         {/* create tickets table to display user or team tickets */}
-        <table className="table table-bordered align-middle mb-0 my-3 bg-white table-striped">
-          <thead className="bg-light">
+        <table
+          id="inventory-table"
+          className="table table-bordered align-middle mb-0 my-3 bg-white table-striped"
+        >
+          <thead id="head">
             <tr>
               <th>Ticket Number</th>
               <th>Ticket Creator</th>

@@ -35,11 +35,14 @@ const Ticket = ({ ticketObj, clickTicket }) => {
       <td>{new Date(dateCreated).toLocaleString()}</td>
       <td className="description">{shortDescription}</td>
       <td>
-        {status == "open" && (
+        {status.toLowerCase() == "open" && (
           <span className="badge badge-success rounded-pill">Open</span>
         )}
-        {status == "closed" && (
+        {status.toLowerCase() == "closed" && (
           <span className="badge badge-secondary rounded-pill">Closed</span>
+        )}
+        {status.toLowerCase() == "in progress" && (
+          <span className="badge badge-warning rounded-pill">In Progress</span>
         )}
       </td>
     </tr>

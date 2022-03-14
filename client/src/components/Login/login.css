@@ -40,8 +40,9 @@ body {
   outline: none;
   height: 50px;
   width: 100% !important;
-  /* background-color: rgb(148, 203, 234); */
-  background-color: rgb(230, 104, 116);
+
+  /* background-color: rgb(230, 104, 116); */
+  background-color: rgb(107, 207, 121);
   color: white;
   border-radius: 4px;
   font-weight: bold;

@@ -1,4 +1,58 @@
-.option-button {
+#home-img {
+  width: 600px;
+  height: 500px;
+  margin-top: 20px;
+
+  /* margin-left: auto; */
+  /* margin-top: 40px; */
+}
+
+#head1 {
+  margin-bottom: 5px;
+  margin-top: 100px;
+  font-family: copperplate gothic light;
+  font-size: 3rem;
+}
+#head2 {
+  font-size: 1rem;
+  font-family: copperplate gothic light;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+#individual {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 50px;
+  border: 3px solid rgb(112, 155, 112);
+  background-color: rgba(107, 207, 120, 0.425);
+  border-radius: 15px;
+  font-family: copperplate gothic light;
+  color: black;
+  /* font-weight: bold; */
+}
+
+#team-label {
+  font-family: copperplate gothic light;
+}
+#select-team {
+  width: 80%;
+  margin-bottom: 30px;
+  height: 50px;
+  padding-left: 10px;
+}
+#view-team {
+  width: 80%;
+  height: 50px;
+  border: 3px solid rgb(112, 155, 112);
+  background-color: rgba(107, 207, 120, 0.425);
+  border-radius: 15px;
+  font-family: copperplate gothic light;
+  color: black;
+}
+/* .option-button {
   padding: 20px;
   width: 40vw !important;
   text-align: center;
@@ -22,8 +76,8 @@
   margin-top: 4rem;
 
   /* float: center !important; */
-}
+/* }
 #view-team {
   width: 20vw;
   padding: 20px;
-}
+} */

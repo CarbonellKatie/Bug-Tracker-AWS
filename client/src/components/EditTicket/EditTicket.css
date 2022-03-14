@@ -4,13 +4,6 @@
   box-sizing: border-box;
 }
 
-textarea,
-select {
-  background-color: rgb(231, 223, 223);
-  resize: vertical;
-  padding: 10px;
-}
-
 /* #EditTable {
   min-width: 90% !important;
   max-width: 90% !important;

@@ -12,6 +12,10 @@
   height: 50px;
 }
 
+#head {
+  /* background-color: rgb(227, 231, 225); */
+}
+
 /* table {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
@@ -29,7 +33,7 @@ td {
   vertical-align: middle !important;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
