@@ -9,7 +9,7 @@ const API_URL =
     ? "http://localhost:3001"
     : "";
 
-const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
+const CreateTicket = () => {
   const { state } = useContext(LoginContext);
 
   //ticket properties and message to alert user that ticket was/was not added successfully

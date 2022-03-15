@@ -35,7 +35,7 @@ const Inventory = () => {
   //fetch all tickets associalted with the current userId stored in the state via http request
   const fetchTicketsIndividual = async () => {
     console.log(state.userId);
-    const res = await fetch("/inventory/getAll/${state.userId}", {
+    const res = await fetch(`/inventory/getAll/${state.userId}`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -49,7 +49,7 @@ const Inventory = () => {
   const fetchTicketsTeam = async () => {
     console.log(state.teamSelectedId);
     const res = await fetch(
-      "/inventory/teams/tickets/${state.teamSelectedId}",
+      `/inventory/teams/tickets/${state.teamSelectedId}`,
       {
         headers: {
           "Content-Type": "application/json",
