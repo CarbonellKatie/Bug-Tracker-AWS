@@ -25,7 +25,7 @@ function App() {
   return (
     // every time we change a value in one of the contexts provider's consumers, all consumers rerender
     <LoginContext.Provider value={{ state, setState }}>
-      <div className="App">
+      <div className="App mx-auto">
         <Router>
           {/* all routes go inside Routes component, makes sure that only one route shows at a time  */}
           <Switch>

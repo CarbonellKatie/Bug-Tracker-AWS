@@ -5,15 +5,15 @@ import Navbar from "../Navbar/Navbar.jsx";
 import "./CreateTicket.css";
 //if we are in production mode, do not prepend localhost:3001, nginx will do that for us
 const API_URL =
-  process.env.NODE_ENV == "development" ? "http://localhost:3001" : "";
+  process.env.REACT_APP_NODE_ENV == "development"
+    ? "http://localhost:3001"
+    : "";
 
 const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
   const { state } = useContext(LoginContext);
 
   //ticket properties and message to alert user that ticket was/was not added successfully
   const [ticketInfo, setTicketInfo] = useState({
-    shortDescription: "",
-    fullDescription: "",
     status: "open",
     message: "",
     submitVis: true,
@@ -23,14 +23,8 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
     state.teamSelectedId > 0 ? state.teamSelectedName : "No Team Selected";
   const teamId =
     state.teamSelectedId > 0 ? `Team Id: ${state.teamSelectedId}` : "";
+
   //set pieces of the state without resetting other pieces of state to default values on rerender
-  const setShortDescription = (value) => {
-    let info = { ...ticketInfo, shortDescription: value };
-    setTicketInfo(info);
-  };
-  const setFullDescription = (value) => {
-    setTicketInfo({ ...ticketInfo, fullDescription: value });
-  };
   const setStatus = (value) => {
     setTicketInfo({ ...ticketInfo, status: value });
   };
@@ -122,7 +116,6 @@ const CreateTicket = ({ userId, showInventoryPage, teamSelected, header }) => {
           )}
 
           {/*  display input fields for user to create a ticket */}
-
           <form onSubmit={submitClick} id="create-form">
             <div className="form-row px-5">
               <div className="form-group col-md-12 pt-5">

@@ -2,11 +2,12 @@ body {
   background: rgb(255, 252, 252) !important;
   /* overflow: hidden; */
   /* overflow-y: hidden; */
-  max-width: 100rem !important;
+  /* max-width: 100rem !important; */
 }
 #parent {
-  width: 100%;
+  width: 100rem !important;
   height: 100%;
+  margin: auto;
 }
 
 /* .container {
