@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import "./login.css";
-import backgroundImg from "../../images/loginbackground.jpg";
+// import backgroundImg from "../../images/loginbackground.jpg";
+import backgroundImg from "../../images/login.png";
 import { LoginContext } from "../../Contexts/LoginContext";
 import { Link, useHistory } from "react-router-dom";
 
@@ -79,7 +80,7 @@ const Login = () => {
 
   return (
     <div id="parent">
-      <section id="main" className="Form my-4 mx-5">
+      <section id="main" className="Form my-5 mx-5">
         <div className="container">
           <div className="row no-gutters row-style">
             <div className="col-lg-5">
@@ -125,15 +126,19 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="form-row">
-                  <button type="submit" className="btn1 mt-3 mb-3">
+                  <button type="submit" className="btn1 mt-3 mb-10">
                     Login
                   </button>
                 </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
 
-                <p className="mb-4 mt-3">
+                {/* <p className="mb-4 mt-3">
                   Don't have an account?&nbsp;&nbsp;
                   <a href="#">Register</a>
-                </p>
+                </p> */}
               </form>
             </div>
           </div>
