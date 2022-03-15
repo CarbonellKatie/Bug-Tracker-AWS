@@ -8,7 +8,8 @@ import { Link, useHistory } from "react-router-dom";
 
 const Login = () => {
   //states updated as soon as text is changed in input fields
-
+  const API_URL =
+    process.env.NODE_ENV == "development" ? "http://localhost:3001" : "";
   const history = useHistory();
   //if the value of the error message is changed (if we go from error being "" to "incorrect username",
   //we need to rerender to update the view to show the error text)
@@ -52,7 +53,7 @@ const Login = () => {
     e.preventDefault();
 
     // VALIDATE INPUT and update app state with user id
-    fetch("http://localhost:3001/login/getUser", {
+    fetch("/login/getUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

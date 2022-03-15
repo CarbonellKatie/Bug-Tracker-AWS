@@ -7,7 +7,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 import { LoginContext } from "../../Contexts/LoginContext.js";
 //if we are in production mode, do not prepend localhost:3001, nginx will do that for us
 const API_URL =
-  process.env.NODE_ENV == "production" ? "" : "http://localhost:3001";
+  process.env.NODE_ENV == "development" ? "http://localhost:3001" : "";
 // purpose of this component is to take in a user id and get all the users tickets from the database
 // via the fetchTickets function (passed as a prop from App.js)
 // based on their id, then display them in a table
@@ -35,7 +35,7 @@ const Inventory = () => {
   //fetch all tickets associalted with the current userId stored in the state via http request
   const fetchTicketsIndividual = async () => {
     console.log(state.userId);
-    const res = await fetch(`${API_URL}/inventory/getAll/${state.userId}`, {
+    const res = await fetch("/inventory/getAll/${state.userId}", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -49,7 +49,7 @@ const Inventory = () => {
   const fetchTicketsTeam = async () => {
     console.log(state.teamSelectedId);
     const res = await fetch(
-      `${API_URL}/inventory/teams/tickets/${state.teamSelectedId}`,
+      "/inventory/teams/tickets/${state.teamSelectedId}",
       {
         headers: {
           "Content-Type": "application/json",
