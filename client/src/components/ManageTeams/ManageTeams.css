@@ -1,0 +1,33 @@
+#view-team, #leave-team, #edit-team{
+    width: 80%;
+  height: 50px;
+  
+  border-radius: 15px;
+  font-family: copperplate gothic light;
+  color: black;
+  cursor:pointer;
+}
+
+#view-team{
+    border: 3px solid rgb(112, 155, 112);
+    background-color: rgba(107, 207, 120, 0.281);
+    margin-bottom:20px;
+}
+
+#edit-team{
+    border: 3px solid rgb(155, 153, 112);
+    background-color: rgba(225, 223, 117, 0.281);
+    margin-bottom:20px;
+}
+#leave-team{
+    border: 3px solid rgb(155, 121, 112);
+    background-color: rgba(207, 112, 107, 0.281);
+}
+
+#team-members-table{
+    margin-top:1.5rem;
+}
+
+#pad{
+    margin-left:100px !important;
+}

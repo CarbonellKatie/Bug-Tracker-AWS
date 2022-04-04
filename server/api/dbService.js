@@ -56,6 +56,7 @@ class DbService {
 
   //check if a user is in the database
   //BINARY requires match to be case sensitive
+  //return the user id and user information from database using given username and password
   async getUserID(username, password) {
     try {
       const response = await new Promise((resolve, reject) => {

@@ -54,7 +54,7 @@ const Login = () => {
     e.preventDefault();
 
     // VALIDATE INPUT and update app state with user id
-    fetch("/login/getUser", {
+    fetch(`${state.API}/login/getUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

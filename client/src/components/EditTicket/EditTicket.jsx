@@ -65,7 +65,7 @@ const EditTicket = () => {
       }),
     };
     //make PUT request to backend to update the ticket with this ticketid using information from state
-    const res = await fetch("/inventory", params);
+    const res = await fetch(`${state.API}/inventory`, params);
     const response = await res.json();
     if (response.success == true) {
       setMessage("Ticket successfully updated.");
@@ -87,7 +87,7 @@ const EditTicket = () => {
       }),
     };
 
-    const res = await fetch("/inventory", params);
+    const res = await fetch(`${state.API}/inventory`, params);
     const response = await res.json();
     if (response.success == true) {
       console.log("success");

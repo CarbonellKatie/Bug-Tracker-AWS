@@ -3,6 +3,7 @@ import Inventory from "./components/Inventory/Inventory.jsx";
 import EditTicket from "./components/EditTicket/EditTicket.jsx";
 import CreateTicket from "./components/CreateTicket/CreateTicket";
 import OptionScreen from "./components/OptionScreen/OptionScreen.jsx";
+import ManageTeams from "./components/ManageTeams/ManageTeams.jsx";
 import { LoginContext } from "./Contexts/LoginContext.js";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
     teamSelectedId: -1,
     teamSelectedName: "",
     ticketObj: null,
+    API: "http://localhost:3001",
   });
 
   return (
@@ -36,6 +38,7 @@ function App() {
             <Route path="/inventory" component={Inventory}></Route>
             <Route path="/edit" component={EditTicket}></Route>
             <Route path="/create" component={CreateTicket}></Route>
+            <Route path="/manageTeams" component={ManageTeams}></Route>
           </Switch>
         </Router>
       </div>

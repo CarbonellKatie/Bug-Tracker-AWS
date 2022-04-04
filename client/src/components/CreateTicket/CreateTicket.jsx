@@ -68,7 +68,7 @@ const CreateTicket = () => {
 
     //make http request and await response, then evaluate response success and display
     //message to indicate success or failure of ticket add
-    const res = await fetch(`/inventory`, requestOptions);
+    const res = await fetch(`${state.API}/inventory`, requestOptions);
     const response = await res.json();
     if (response.success == true) {
       addSuccess();
