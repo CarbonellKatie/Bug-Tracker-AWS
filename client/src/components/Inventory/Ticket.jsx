@@ -25,8 +25,8 @@ const Ticket = ({ ticketObj, clickTicket }) => {
     <tr id="trow" onClick={() => clickTicket(ticketObj)}>
       <td>{ticketId}</td>
       <td>
-        <p className="fw-bold mb-1">{creatorName}</p>
-        <p className="text-muted mb-0">User Id: {creatorId}</p>
+        <p className="fw-bold mb-1">{ticketObj.username}</p>
+        <p className="text-muted mb-0">User Id: {ticketObj.creator_id}</p>
       </td>
       <td>
         <p className="fw-bold mb-1">{teamName}</p>

@@ -38,7 +38,7 @@ class DbService {
         //select ticket information, including all information in the ticket table. Use teamId and creator_id to find
         //the team name and usernam of the creator from teams and users table
         const query =
-          "SELECT tickets.*, users.username, teams.name FROM tickets JOIN users ON tickets.creator_id = users.user_id LEFT OUTER JOIN teams ON tickets.team_id = teams.team_id";
+          "SELECT tickets.*, users.username, teams.name FROM tickets JOIN users ON tickets.creator_id = users.user_id LEFT OUTER JOIN teams ON tickets.team_id = teams.team_id WHERE tickets.creator_id = ?";
         pool.query(query, [userId], (error, results) => {
           if (error) {
             reject(new Error(error.message));
@@ -165,7 +165,8 @@ class DbService {
   //get all tickets associated with the teamId given
   async getTeamTickets(teamId) {
     const tickets = await new Promise((resolve, reject) => {
-      const query = "SELECT * FROM tickets WHERE team_id = ?";
+      const query =
+        "SELECT tickets.*, users.username, teams.name FROM tickets JOIN users ON tickets.creator_id = users.user_id LEFT OUTER JOIN teams ON tickets.team_id = teams.team_id WHERE tickets.team_id = ?";
       pool.query(query, [teamId], (err, results) => {
         if (err) {
           reject(new Error(err.message));
@@ -175,6 +176,22 @@ class DbService {
       });
     });
     return tickets;
+  }
+
+  async getTeamMembers(teamId) {
+    const members = await new Promise((resolve, reject) => {
+      const query =
+        "SELECT team_members.user_id, users.username FROM team_members INNER JOIN users ON team_members.user_id = users.user_id WHERE team_id = ?";
+      pool.query(query, teamId, (err, results) => {
+        if (err) {
+          reject(new Error(err.message));
+        }
+        console.log(results);
+        resolve(results);
+      });
+    });
+    //return this promise so it can be resolved / rejected in the other file, where we will handle errors & respond w/ a json error msg or result set
+    return members;
   }
 }
 module.exports = DbService;

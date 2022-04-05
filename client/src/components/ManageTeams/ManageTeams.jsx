@@ -2,16 +2,18 @@ import Navbar from "../Navbar/Navbar.jsx";
 import "./ManageTeams.css";
 import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import TeamMember from "./TeamMember";
+
 import { LoginContext } from "../../Contexts/LoginContext";
 
 const ManageTeams = () => {
   //keep track of the team names that will be put in the drop down menu and the name of the team selected
   const [teams, setTeams] = useState({
-    teamObjects: [],
+    teamObjects: [], //array of team objects
     teamSelected: 0,
     teamSelectedName: "",
     showMemberTable: false,
-    teamMembers: [],
+    teamMembers: [], //array of team member objects {user_id, username}
   });
 
   const { state, setState } = useContext(LoginContext);
@@ -27,7 +29,7 @@ const ManageTeams = () => {
       const teams = await fetchTeams(state.userId);
       //if the array of teams for this user is not empty, set the default team selected
       //to the first team in the list
-      // console.log(teams.teams);
+
       setTeams({
         ...teams,
         teamObjects: teams.teams,
@@ -51,10 +53,31 @@ const ManageTeams = () => {
       params
     );
     const teams = await results.json();
+
     return teams;
   };
 
-  const fetchMembers = () => {};
+  //fetch all member objects from the currently selected team (teamId stored in state)
+  const fetchMembers = async (teamId) => {
+    const params = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const results = await fetch(
+      `${state.API}/inventory/teams/members/${teamId}`,
+      params
+    );
+    const memberObjects = await results.json();
+    console.log(memberObjects.members);
+    // return memberObjects.members;
+    setTeams({
+      ...teams,
+      teamMembers: memberObjects.members,
+      showMemberTable: true,
+    });
+  };
 
   //set team selected in App state using Contexts
   //change team selected when user selects a different team in the drop down menu
@@ -92,8 +115,10 @@ const ManageTeams = () => {
 
   ////display member table for this team and allow user to edit member list
   const editTeam = () => {
-    const members = fetchMembers(teams.teamSelected);
-    setTeams({ ...teams, showMemberTable: true, teamMembers: members });
+    // const members = fetchMembers(teams.teamSelected);
+    fetchMembers(teams.teamSelected);
+    // setTeams({ ...teams, showMemberTable: true, teamMembers: members });
+    console.log(teams.teamMembers);
   };
 
   return (
@@ -203,31 +228,13 @@ const ManageTeams = () => {
                       <tr>
                         <th scope="col">User Id</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Remove from Team</th>
+                        {/* <th scope="col">Remove from Team</th> */}
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>
-                          <button>Remove</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>
-                          <button>Remove</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>
-                          <button>Remove</button>
-                        </td>
-                      </tr>
+                      {teams.teamMembers?.map((member, index) => (
+                        <TeamMember key={index} member={member} />
+                      ))}
                     </tbody>
                   </table>
                 )}

@@ -51,7 +51,6 @@ const EditTicket = () => {
     //get the ticket object that was clicked on (stored in context when ticket is clicked)
     const ticket = state.ticketObj;
 
-    console.log("in submit click");
     const params = {
       method: "PUT",
       headers: {
@@ -74,20 +73,22 @@ const EditTicket = () => {
     }
   };
 
+  //make request to /inventory route to delete ticket with the given ticketId (determined by accessing the
+  // ticket_id of the ticket object that is currently focused in state)
   const deleteClick = async (e) => {
     e.preventDefault;
-    console.log("got here");
+
     const params = {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({
-        ticketId: state.ticketObj.ticket_id,
-      }),
     };
 
-    const res = await fetch(`${state.API}/inventory`, params);
+    const res = await fetch(
+      `${state.API}/inventory/${state.ticketObj.ticket_id}`,
+      params
+    );
     const response = await res.json();
     if (response.success == true) {
       console.log("success");
